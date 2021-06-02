@@ -14,6 +14,7 @@ class PlanPresenter:
         if additional_fields is None:
             additional_fields = {}
         return cls(
+            identifier=data.get('identifier'),
             task_name=data.get('task_name'),
             category=data.get('category'),
             countable_value=data.get('countable_value'),

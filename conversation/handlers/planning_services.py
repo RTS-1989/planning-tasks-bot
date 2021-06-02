@@ -81,5 +81,6 @@ def init_planning_tasks(dp: Dispatcher, planning_service: PlanningService):
 
         if isinstance(response, PlanCreateSuccessResponse):
             planning_task: Plan = response.item
-            await message.edit_reply_markup(reply_markup=REMOVE_INLINE_KEYBOARD_REPLY)
+            # Здесь падает
+            # await message.edit_reply_markup(reply_markup=REMOVE_INLINE_KEYBOARD_REPLY)
             await message.answer(f'Задача {planning_task.id} внесена в базу', reply_markup=MAIN_KB)

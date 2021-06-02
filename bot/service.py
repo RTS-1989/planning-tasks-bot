@@ -56,3 +56,8 @@ def regions_kb():
             )
         )
     return kb
+
+
+def yandex_schedule():
+    kb = InlineKeyboardMarkup()
+    schedule_keys = list()

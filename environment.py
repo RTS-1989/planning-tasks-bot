@@ -16,6 +16,7 @@ class Environment:
         self.planning_bot_token = _env.str('PLANNING_BOT_TOKEN', '')
 
         self.yandex_rasp_token = _env.str('YANDEX_RASP_TOKEN', '')
+        self.yandex_rasp_url = _env.str('YANDEX_RASP_URL', '')
 
     @property
     def redis_uri(self) -> str:
