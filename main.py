@@ -6,6 +6,7 @@ from clients.planning_service.service import PlanningService
 from environment import init_environment
 from redis import init_redis
 from repositories.redis_repository import RedisRepository
+from nasa_api.service import NasaImageOfTheDay
 
 
 def start_app():
@@ -21,8 +22,10 @@ def start_app():
 
         redis = await init_redis(environment)
         redis_repository = RedisRepository(redis)
+        nasa_image = NasaImageOfTheDay()
 
-        init_handlers(dp=dispatcher, planning_service=planning_service, redis_repository=redis_repository)
+        init_handlers(dp=dispatcher, planning_service=planning_service, redis_repository=redis_repository,
+                      nasa_image=nasa_image)
 
     async def on_shutdown(*_, **__):
         pass

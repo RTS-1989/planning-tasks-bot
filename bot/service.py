@@ -5,6 +5,7 @@ from emoji import emojize
 from bot.dialogs import msg
 from config import SERVICES, COUNTRIES_SERVICES
 from countries_app.config_countries import COUNTRIES, REGIONS
+from nasa_api.nasa_api_dialogs import NASA_PHOTO_BUTTON_TEXT
 
 MAIN_KB = ReplyKeyboardMarkup(
     resize_keyboard=True,
@@ -52,7 +53,20 @@ def regions_kb():
         kb.add(
             InlineKeyboardButton(
                 f'{region_id}. {REGIONS[region_id][0]}',
-                callback_data=f'chosen_region_#{region_id}'
+                callback_data='cat'
+            )
+        )
+    return kb
+
+
+def nasa_photo_kb():
+    kb = InlineKeyboardMarkup()
+    nasa_api_keys = list(NASA_PHOTO_BUTTON_TEXT.keys())
+    for nasa_api_key in nasa_api_keys:
+        kb.add(
+            InlineKeyboardButton(
+                text=f'{nasa_api_key}. {NASA_PHOTO_BUTTON_TEXT[nasa_api_key]}',
+                callback_data=f'chosen_nasa_api_#{nasa_api_key}'
             )
         )
     return kb

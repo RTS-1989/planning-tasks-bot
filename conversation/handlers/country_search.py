@@ -14,8 +14,6 @@ def init_country_by_text_search(dp: Dispatcher):
         country_service_id = 0
         if callback_query:
             country_service_id = callback_query.data.split('#')[-1]
-            print(country_service_id)
-        print(country_service_id)
 
         if country_service_id == '1':
             await callback_query.message.edit_reply_markup(reply_markup=regions_kb())

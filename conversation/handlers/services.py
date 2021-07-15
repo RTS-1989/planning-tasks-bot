@@ -4,13 +4,13 @@ from aiogram.dispatcher import Dispatcher
 from bot.dialogs import msg
 from bot.service import MAIN_KB
 from my_calendar.keyboard import CALENDAR_MAIN_KB
-from bot.service import services_kb, countries_kb
+from bot.service import services_kb, countries_kb, nasa_photo_kb
 from planning.keyboard import planning_keyboard
 from config import SERVICES
 
 services_kbs = {
     '1': planning_keyboard,
-    '2': '',
+    '2': nasa_photo_kb,
     '3': countries_kb,
     '4': '',
     '5': '',
@@ -54,10 +54,8 @@ def init_services_handlers(dp: Dispatcher):
         service_id = 0
         if callback_query:
             service_id = callback_query.data.split('#')[-1]
-        print(service_id)
 
         for s_id in SERVICES.keys():
-            print(s_id)
             if s_id == service_id:
                 await callback_query.message.edit_reply_markup(reply_markup=services_kbs[s_id]())
                 break
